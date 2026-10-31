@@ -9,7 +9,7 @@ class AudioPlayerService {
             forResource: "song",
             withExtension: "mp3"
         ) else {
-            print("Song not found..")
+            print("Song not found")
             return
         }
         
@@ -23,10 +23,10 @@ class AudioPlayerService {
     }
     
     func pause() {
-        
+        player?.pause()
     }
     
     func stop() {
-        
+        player?.stop()
     }
 }
