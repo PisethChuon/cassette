@@ -1,7 +1,18 @@
-//
-//  AudioPlayerService.swift
-//  OldSongs
-//
-//  Created by chuonpiseth on 31/10/26.
-//
+import AVFoundation
 
+@Observable
+class AudioPlayerService {
+    private var player: AVAudioPlayer?
+    
+    func play() {
+        
+    }
+    
+    func pause() {
+        
+    }
+    
+    func stop() {
+        
+    }
+}
