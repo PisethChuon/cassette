@@ -1,14 +1,12 @@
 import SwiftUI
 import AVFoundation
 
-// MARK: - Model
 struct Song: Identifiable {
     let url: URL
     var id: URL { url }
     var title: String { url.deletingPathExtension().lastPathComponent }
 }
 
-// MARK: - ViewModel
 @Observable
 final class PlayerViewModel {
     var songs: [Song] = []
