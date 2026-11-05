@@ -11,8 +11,20 @@
     ],
   },
   "files": [
-    { "kind": "folder", "path": "OldSongs", "target-membership": [ "OldSongs" ] },
     {
+      "kind": "group",
+      "path": "OldSongs",
+      "children": [
+        { "path": "Assets.xcassets", "target-membership": [ "OldSongs/resources" ] },
+        { "path": "AudioPlayerService.swift", "target-membership": [ "OldSongs/compile-sources" ] },
+        { "path": "ContentView.swift", "target-membership": [ "OldSongs/compile-sources" ] },
+        { "path": "Info.plist" },
+        { "path": "Library.swift", "target-membership": [ "OldSongs/compile-sources" ] },
+        { "path": "OldSongsApp.swift", "target-membership": [ "OldSongs/compile-sources" ] },
+        { "path": "songs.json", "target-membership": [ "OldSongs/resources" ] },
+        { "kind": "folder", "path": "SinSisamuth", "target-membership": [ "OldSongs" ] },
+      ],
+    }, {
       "kind": "group",
       "name": "Products",
       "children": [
@@ -38,6 +50,7 @@
         "CURRENT_PROJECT_VERSION": "1",
         "ENABLE_PREVIEWS": "YES",
         "GENERATE_INFOPLIST_FILE": "YES",
+        "INFOPLIST_FILE": "OldSongs/Info.plist",
         "INFOPLIST_KEY_UIApplicationSceneManifest_Generation": "YES",
         "INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents": "YES",
         "INFOPLIST_KEY_UILaunchScreen_Generation": "YES",

@@ -2,40 +2,31 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var audioPlayer = AudioPlayerService()
-    
+
     var body: some View {
         VStack(spacing: 30) {
-            Image(systemName: "music.note")
+            Image(systemName: "recordingtape")
                 .font(.system(size: 80))
                 .foregroundStyle(.blue)
-            
-            Text("My First Music Player")
+
+            Text(audioPlayer.currentTitle)
                 .font(.title2)
                 .bold()
-            
-            HStack(spacing: 30) {
-                Button {
-                    audioPlayer.play()
-                } label: {
-                    Image(systemName: "play.fill")
-                }
 
-                Button {
-                    audioPlayer.pause()
-                } label: {
-                    Image(systemName: "pause.fill")
-                }
-                
-                Button {
-                    audioPlayer.stop()
-                } label: {
-                    Image(systemName: "stop.fill")
-                }
+            Button {
+                audioPlayer.togglePlayPause()
+            } label: {
+                Image(systemName: audioPlayer.isPlaying ? "pause.fill" : "play.fill")
             }
             .font(.largeTitle)
             .buttonStyle(.bordered)
         }
         .padding()
+        .onAppear {
+            Library.printReport()
+            let root = Bundle.main.resourcePath!
+            print(try? FileManager.default.contentsOfDirectory(atPath: root))
+        }
     }
 }
 
