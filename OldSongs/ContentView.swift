@@ -12,21 +12,31 @@ struct ContentView: View {
             Text(audioPlayer.currentTitle)
                 .font(.title2)
                 .bold()
+                .multilineTextAlignment(.center)
 
-            Button {
-                audioPlayer.togglePlayPause()
-            } label: {
-                Image(systemName: audioPlayer.isPlaying ? "pause.fill" : "play.fill")
+            HStack(spacing: 30) {
+                Button {
+                    audioPlayer.previous()
+                } label: {
+                    Image(systemName: "backward.fill")
+                }
+
+                Button {
+                    audioPlayer.togglePlayPause()
+                } label: {
+                    Image(systemName: audioPlayer.isPlaying ? "pause.fill" : "play.fill")
+                }
+
+                Button {
+                    audioPlayer.next()
+                } label: {
+                    Image(systemName: "forward.fill")
+                }
             }
             .font(.largeTitle)
             .buttonStyle(.bordered)
         }
         .padding()
-        .onAppear {
-            Library.printReport()
-            let root = Bundle.main.resourcePath!
-            print(try? FileManager.default.contentsOfDirectory(atPath: root))
-        }
     }
 }
 
