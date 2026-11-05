@@ -85,6 +85,7 @@ fastlane/test_output
 
 # Other
 *.DS_Store
+*.plist
 
 iOSInjectionProject/
 
