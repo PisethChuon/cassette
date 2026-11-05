@@ -10,7 +10,7 @@ struct Track: Codable, Identifiable {
 enum Library {
     // Name of the blue folder in Xcode that holds the audio files
     static let folderName = "SinSisamuth"
-
+    
     // Read songs.json from the app bundle
     static func loadTracks() -> [Track] {
         do {
@@ -25,16 +25,23 @@ enum Library {
             return []
         }
     }
-
+    
     // The ONLY place that knows where the audio files live.
     // Later, if songs move to downloaded packs, change only this function.
     static func fileURL(for track: Track) -> URL? {
         let name = track.file as NSString
-        return Bundle.main.url(forResource: name.deletingPathExtension,
-                               withExtension: name.pathExtension,
-                               subdirectory: folderName)
+        let base = name.deletingPathExtension
+        let ext = name.pathExtension
+        
+        // 1. Inside a blue folder (best)
+        if let url = Bundle.main.url(forResource: base, withExtension: ext,
+                                     subdirectory: folderName) {
+            return url
+        }
+        // 2. Loose in the app (what you have now)
+        return Bundle.main.url(forResource: base, withExtension: ext)
     }
-
+    
     // Debug helper: prints which songs are found or missing
     static func printReport() {
         let tracks = loadTracks()
