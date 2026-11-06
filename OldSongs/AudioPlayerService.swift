@@ -13,7 +13,6 @@ final class AudioPlayerService: NSObject, AVAudioPlayerDelegate {
     private var player: AVAudioPlayer?
 
     private let queueKey = "cassette.queue"
-    
     private let positionKey = "cassette.position"
 
     override init() {
